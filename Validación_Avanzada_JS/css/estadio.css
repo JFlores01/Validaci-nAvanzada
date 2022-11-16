@@ -1,0 +1,34 @@
+body{
+
+    background-color: azure;
+
+}
+
+.mapadiv{
+
+    background-color: azure;
+    display: block;
+    margin: auto;
+    width: 50%;
+    margin-top: 55px;
+    
+
+
+}
+
+.mapadiv path{
+
+    stroke: black;
+    stroke-width: 1.5px;
+    cursor: pointer;
+
+
+}
+
+.mapadiv path:hover{
+
+    fill: green;
+    opacity: 50%;
+
+}
+
