@@ -62,6 +62,31 @@ function checkInputs() {
         setSuccesFor(email);
     }
 
+    if(dniValue === ''){
+        setError(dni, 'Por favor, rellene el campo');
+    }else if(!isDNI(dniValue)){
+        setError(dni, 'Ingrese un DNI válido');
+    }else{
+        setSuccesFor(dni);
+    }
+
+    if(contrasenaValue === ''){
+        setError(contrasena, 'Por favor, rellene el campo');
+    }else if(!isContrasena(contrasenaValue)){
+        setError(contrasena, 'Ingrese una contraseña entre 4 y 15 caracteres.');
+    }else{
+        setSuccesFor(contrasena);
+    }
+
+    if(contrasena2Value === ''){
+        setError(contrasena2, 'Por favor, repita la contraseña');
+    }else if(contrasena2Value == contrasenaValue){
+        setSuccesFor(contrasena2);
+    }else{
+        setError(contrasena2, 'Las contraseñas deben coincidir');
+    }
+
+
 }
 
     function setError(input, message) {
@@ -84,6 +109,17 @@ function checkInputs() {
         return /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/.test(nombre);
     }
 
+    function isDNI(dni){
+        return /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i.test(dni);
+    }
+
+    function isContrasena(contrasena){
+        return /^.{4,15}$/.test(contrasena);
+    }
+
+    function isContrasena2(contrasena2){
+        return /^.{4,15}$/.test(contrasena2);
+    }
 
 
 function login() {
