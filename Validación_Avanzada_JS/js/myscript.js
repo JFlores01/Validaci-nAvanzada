@@ -1,6 +1,6 @@
 document.getElementById("btn__iniciarsesion").addEventListener("click", login);
 document.getElementById("btn__registrarse").addEventListener("click", register);
-const formulario = document.getElementById('formulario');
+const formulario = document.getElementById('formulario__register');
 const inputs = document.querySelectorAll('#formulario__register input');
 
 //window.addEventListener("resize, anchopg");
@@ -24,8 +24,65 @@ const expresiones = {
     iban: /([a-zA-Z]{2})\s*\t*(\d{2})\s*\t*(\d{4})\s*\t*(\d{4})\s*\t*(\d{2})\s*\t*(\d{10})/ // regex iban
 }
 
+const nombre = document.getElementById('nombreregister');
+const email = document.getElementById('correoregister');
+const dni = document.getElementById('dni');
+const contrasena = document.getElementById('contrasenaregister');
+const contrasena2 = document.getElementById('contrasenaregister2');
 
 
+formulario.addEventListener('submit', e => {
+    e.preventDefault();
+    checkInputs();
+
+
+});
+
+function checkInputs() {
+    const nombreValue = nombre.value.trim();
+    const emailValue = email.value.trim();
+    const dniValue = dni.value.trim();
+    const contrasenaValue = contrasena.value.trim();
+    const contrasena2Value = contrasena2.value.trim();
+
+    if (nombreValue === '' ) {
+        setError(nombre, 'Rellene el campo por favor.');
+    }else if(!isNombre(nombreValue)){
+        setError(nombre, 'No ingreso un nombre válido.')
+    }
+    else{
+        setSuccesFor(nombre);
+    }
+
+    if(emailValue === ''){
+        setError(email, 'Por favor, rellene el campo de forma correcta');
+    }else if(!isEmail(emailValue)){
+        setError(email, 'No ingreso un email valido.')
+    }else{
+        setSuccesFor(email);
+    }
+
+}
+
+    function setError(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'form-control error';
+        small.innerText = message;
+    }
+
+    function setSuccesFor(input){
+        const formControl = input.parentElement;
+        formControl.className = 'form-control success';
+    }
+
+    function isEmail(email){
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    }
+
+    function isNombre(nombre){
+        return /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/.test(nombre);
+    }
 
 
 
