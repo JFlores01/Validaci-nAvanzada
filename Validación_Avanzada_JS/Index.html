@@ -38,7 +38,7 @@
 
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form action="" class="formulario__login" id="formulario__login">
+                <form class="formulario__login" id="formulario__login">
 
                     <i class="realmadrid">
                         <img src="image/madrid.jpg">
@@ -46,12 +46,12 @@
                     <h2>Iniciar Sesión</h2>
                     <input type="text" placeholder="Correo Electronico" id="correologin">
                     <input type="password" placeholder="Contraseña" id="contrasenalogin">
-                    <button>Entrar</button>
+                    <button type="submit" id="logeo">Entrar</button>
 
 
                 </form>
 
-                <form action="" class="formulario__register" id="formulario__register">
+                <form action="" class="formulario__register" onsubmit="checkInputs()" id="formulario__register">
                     <!--Register-->
                     <i class="realmadrid">
                         <img src="image/madrid.jpg">
@@ -90,7 +90,7 @@
 
 
 
-                    <button type="submit">Registrarse</button>
+                    <button type="submit" id="registro">Registrarse</button>
 
 
                 </form>

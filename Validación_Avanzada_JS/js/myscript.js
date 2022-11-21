@@ -1,6 +1,7 @@
 document.getElementById("btn__iniciarsesion").addEventListener("click", login);
 document.getElementById("btn__registrarse").addEventListener("click", register);
 const formulario = document.getElementById('formulario__register');
+const formulariologin = document.getElementById('formulario__login');
 const inputs = document.querySelectorAll('#formulario__register input');
 
 //window.addEventListener("resize, anchopg");
@@ -29,6 +30,7 @@ const email = document.getElementById('correoregister');
 const dni = document.getElementById('dni');
 const contrasena = document.getElementById('contrasenaregister');
 const contrasena2 = document.getElementById('contrasenaregister2');
+const verdadero = true;
 
 
 formulario.addEventListener('submit', e => {
@@ -36,6 +38,13 @@ formulario.addEventListener('submit', e => {
     checkInputs();
 
 
+
+});
+
+formulariologin.addEventListener('submit', e => {
+    
+    InicioSesion();
+    
 });
 
 function checkInputs() {
@@ -45,81 +54,158 @@ function checkInputs() {
     const contrasenaValue = contrasena.value.trim();
     const contrasena2Value = contrasena2.value.trim();
 
-    if (nombreValue === '' ) {
+    if (nombreValue === '') {
         setError(nombre, 'Rellene el campo por favor.');
-    }else if(!isNombre(nombreValue)){
+        verdadero = false;
+    } else if (!isNombre(nombreValue)) {
         setError(nombre, 'No ingreso un nombre válido.')
+        verdadero = false;
     }
-    else{
+    else {
         setSuccesFor(nombre);
+
     }
 
-    if(emailValue === ''){
+    if (emailValue === '') {
         setError(email, 'Por favor, rellene el campo de forma correcta');
-    }else if(!isEmail(emailValue)){
+        verdadero = false;
+    } else if (!isEmail(emailValue)) {
         setError(email, 'No ingreso un email valido.')
-    }else{
+        verdadero = false;
+    } else {
         setSuccesFor(email);
     }
 
-    if(dniValue === ''){
+    if (dniValue === '') {
         setError(dni, 'Por favor, rellene el campo');
-    }else if(!isDNI(dniValue)){
+        verdadero = false;
+    } else if (!isDNI(dniValue)) {
         setError(dni, 'Ingrese un DNI válido');
-    }else{
+        verdadero = false;
+    } else {
         setSuccesFor(dni);
     }
 
-    if(contrasenaValue === ''){
+    if (contrasenaValue === '') {
         setError(contrasena, 'Por favor, rellene el campo');
-    }else if(!isContrasena(contrasenaValue)){
+        verdadero = false;
+    } else if (!isContrasena(contrasenaValue)) {
         setError(contrasena, 'Ingrese una contraseña entre 4 y 15 caracteres.');
-    }else{
+        verdadero = false;
+    } else {
         setSuccesFor(contrasena);
     }
 
-    if(contrasena2Value === ''){
+    if (contrasena2Value === '') {
         setError(contrasena2, 'Por favor, repita la contraseña');
-    }else if(contrasena2Value == contrasenaValue){
+        verdadero = false;
+    } else if (contrasena2Value == contrasenaValue) {
         setSuccesFor(contrasena2);
-    }else{
+    } else {
         setError(contrasena2, 'Las contraseñas deben coincidir');
+        verdadero = false;
     }
+
+    if (verdadero) {
+
+
+
+
+        var corr = document.getElementById("correoregister").value;
+        var contra1 = document.getElementById("contrasenaregister").value;
+
+
+
+        /*Guardando los datos en el LocalStorage*/
+        var usuario = {
+            corr: corr,
+            contra1: contra1
+
+        }
+
+
+        var json = JSON.stringify(usuario);
+        localStorage.setItem(corr, json);
+        localStorage.setItem(contra1, json);
+        console.log("Okey");
+
+        /*Limpiando los campos o inputs*/
+ 
+
+        window.location.replace("registro2.html");
+    }
+
+
+    /*Funcion Cargar y Mostrar datos
+    $(document).ready(function(){    
+        $('#boton-cargar').click(function(){                       
+            /*Obtener datos almacenados
+            var nombre = localStorage.getItem("Nombre");
+            var apellido = localStorage.getItem("Apellido");
+            /*Mostrar datos almacenados*    
+            document.getElementById("nombre").innerHTML = nombre;
+            document.getElementById("apellido").innerHTML = apellido; 
+        });   
+    });*/
 
 
 }
 
-    function setError(input, message) {
-        const formControl = input.parentElement;
-        const small = formControl.querySelector('small');
-        formControl.className = 'form-control error';
-        small.innerText = message;
-    }
+function InicioSesion (e){
+    event.preventDefault();
 
-    function setSuccesFor(input){
-        const formControl = input.parentElement;
-        formControl.className = 'form-control success';
-    }
+    var corr = document.getElementById("correologin").value;
+    var contra1 = document.getElementById("contrasenalogin").value;
 
-    function isEmail(email){
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-    }
 
-    function isNombre(nombre){
-        return /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/.test(nombre);
-    }
 
-    function isDNI(dni){
-        return /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i.test(dni);
-    }
+    var usuario = localStorage.getItem(corr, contra1);
+    var datos = JSON.parse(usuario);
+    console.log("buenos dias");
+    if(usuario==null){
+        alert("Datos Incorrectos");
 
-    function isContrasena(contrasena){
-        return /^.{4,15}$/.test(contrasena);
-    }
+    }else if( corr == datos.corr && contra1 == datos.contra1){
 
-    function isContrasena2(contrasena2){
-        return /^.{4,15}$/.test(contrasena2);
+        window.location.replace("pagina1.html");  
+    }else{
+        alert("Datos Incorrectos");
     }
+}
+
+
+
+function setError(input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+    formControl.className = 'form-control error';
+    small.innerText = message;
+}
+
+function setSuccesFor(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+}
+
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+function isNombre(nombre) {
+    return /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/.test(nombre);
+}
+
+function isDNI(dni) {
+    return /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i.test(dni);
+}
+
+function isContrasena(contrasena) {
+    return /^.{4,15}$/.test(contrasena);
+}
+
+function isContrasena2(contrasena2) {
+    return /^.{4,15}$/.test(contrasena2);
+}
 
 
 function login() {

@@ -15,7 +15,6 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-   
 
 }
 
@@ -27,63 +26,7 @@ main{
 
 }
 
-.contenedor__todo{
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    position: relative;
-    margin-top: 30px;
 
-}
-
-.caja__trasera{
-
-    width: 100%;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
-
-}
-
-.caja__trasera div{
-    margin: 100px 40px;
-    color: white;
-    transition: all 500ms;
-
-}
-
-.caja__trasera div p,
-.caja__trasera div button{
-    margin-top: 30px;
-
-
-}
-
-.caja__trasera div h3{
-    font-weight: 400;
-    font-size: 26px;
-
-}
-
-.caja__trasera button{
-    padding: 10px 40px;
-    border: 2px solid #fff;
-    background: transparent;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    color: white;
-    outline: none;
-    transition: all 300ms;
-}
-
-.caja__trasera button:hover{
-    background: #fff;
-    color: #46A2FD;
-
-}
 
 /*Formulario*/
 .contenedor__login-register{
@@ -135,14 +78,14 @@ main{
 
 }
 
-.formulario__login{
-    opacity: 1;
-    display: block;
-
-}
 
 .formulario__register{
-    display: none;
+    display: block;
+    margin: auto;
+    margin-top: 1000px;
+    margin-left: 720px;
+    
+
 }
 
 /*Responsive*/
@@ -152,12 +95,7 @@ main{
         margin-top: 50px;
     }
 
-    .caja__trasera{
-        max-width: 350px;
-        height: 300px;
-        flex-direction: column;
-        margin: auto;
-    }
+
 
     .caja__trasera div{
         margin: 0px;
@@ -170,6 +108,7 @@ main{
         top: -10px;
         left: -5px;
         margin: auto;
+        position: center;
 
     }
 
