@@ -21,7 +21,28 @@ nav{
 .enlace2{
     position: absolute;
     padding: 20px 50px;
-    margin-left: 135px;
+    margin-left: 130px;
+}
+
+.enlace3{
+    position: absolute;
+    padding: 20px 50px;
+    margin-left: 1350px;
+    
+}
+
+.enlace4{
+    position: absolute;
+    padding: 20px 50px;
+    margin-left: 1450px;
+    
+}
+.enlace5{
+    position: absolute;
+    padding: 20px 50px;
+    margin-left: 830px;
+   
+    
 }
 .logo{
     height: 40px;
@@ -60,13 +81,39 @@ li a.active, li a:hover{
 }
 section{
    
-    background-size: 10%;
+   
     background-position: center center;
     height: calc(100vh - 80px);
-    background-image: url(../image/madrid.jpg);
-    background-repeat: no-repeat;
+    background-image: url(../image/BENZEMA.jpg), url(../image/COURTOIS.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position:  left, right;
+    background-size:  30%, 30%;
     
+   
 }
+
+
+
+.entradas button{
+    
+        margin-left: auto;
+        margin-right: 930px;
+        margin-top: 70px;
+        display: block;
+        
+        
+
+}
+
+.entradas button:hover{
+    color: cadetblue;
+}
+
+
+
+
+
+
 
 section label{
     text-align: center;
@@ -78,17 +125,26 @@ section label{
 
 .partido{
     width: 400px;
-    height: 400px;
     display: block;
     margin: auto;
     margin-bottom: 20px;
+    margin-left: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .partido img{
-
     width: 40%;
     height: 40%;
 }
+
+
+
+
+
+
 
 
 @media (max-width: 952px){
