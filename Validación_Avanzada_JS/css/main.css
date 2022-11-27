@@ -186,3 +186,18 @@ section label{
         left:0;
     }
 }
+
+.entradas img{
+    
+
+        width: 500px;
+        height: 300px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 50px;
+        margin-right: 730px;
+
+    
+    
+}

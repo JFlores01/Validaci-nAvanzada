@@ -136,17 +136,7 @@ function checkInputs() {
     }
 
 
-    /*Funcion Cargar y Mostrar datos
-    $(document).ready(function(){    
-        $('#boton-cargar').click(function(){                       
-            /*Obtener datos almacenados
-            var nombre = localStorage.getItem("Nombre");
-            var apellido = localStorage.getItem("Apellido");
-            /*Mostrar datos almacenados*    
-            document.getElementById("nombre").innerHTML = nombre;
-            document.getElementById("apellido").innerHTML = apellido; 
-        });   
-    });*/
+
 
 
 }
@@ -161,7 +151,7 @@ function InicioSesion (e){
 
     var usuario = localStorage.getItem(corr, contra1);
     var datos = JSON.parse(usuario);
-    console.log("buenos dias");
+    
     if(usuario==null){
         alert("Datos Incorrectos");
 
